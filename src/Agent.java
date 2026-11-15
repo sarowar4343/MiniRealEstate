@@ -18,17 +18,12 @@ public class Agent {
         return commissionRate;
     }
 
-    public double calculateCommission(double salesRate){
-        if (salesRate < 0) {
+    public double calculateCommission(double salesPrice){
+        if (salesPrice < 0) {
             throw new IllegalArgumentException("Sales Rate must be positive");
         }
-       return salesRate * commissionRate;
+       return salesPrice * commissionRate;
     }
 
-    static void main(String[] args) {
-        Agent agent = new Agent("Rahim","01720046789", 0.02);
-        IO.println(agent.getName());
-        IO.println(agent.calculateCommission(7500000));
-    }
 
 }
