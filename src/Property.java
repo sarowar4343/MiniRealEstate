@@ -3,7 +3,7 @@ public class Property {
     private double price;
     private int bedroom;
     private boolean isSold;
-    public Agent agent;
+    private Agent agent;
 
     public Property(String address, double price, int bedroom, Agent agent) {
         this.address = address;
@@ -13,13 +13,17 @@ public class Property {
         this.agent = agent;
     }
 
-    public boolean setPrice(double price) {
+    public void setPrice(double price) {
         if(price < 1) {
             throw new IllegalArgumentException("Price cannot be less than 1");
         }
         this.price = price;
-        return true;
     }
+
+    public String getAddress() {
+        return address;
+    }
+
     public double getPrice(){
         return this.price;
     }
@@ -45,7 +49,7 @@ public class Property {
     public void printDetails(){
         String status;
         if (!this.isSold) {
-            status = "Not Sold";
+            status = "Available";
         }
         else {
             status = "Sold";
