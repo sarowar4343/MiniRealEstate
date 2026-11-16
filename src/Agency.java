@@ -20,18 +20,4 @@ public class Agency {
     }
 
 
-    static void main(String[] args) {
-        Agent rahim = new Agent("Rahim Sheikh","016485548",0.2);
-        Property gulshanProperty = new Property("Gulshan,Dhaka",8500000,1,rahim);
-        Agency dhakaHomes = new Agency("Dhaka Homes");
-        dhakaHomes.addProperty(gulshanProperty);
-
-        Agent karim = new Agent("Karim Abbas", "016486166",0.15);
-        Property vatara = new Property("Vatara,Dhaka",8500000,1,karim);
-        vatara.markSold();
-        dhakaHomes.addProperty(vatara);
-
-        dhakaHomes.printAllProperties();
-
-    }
 }

@@ -53,7 +53,7 @@ public class Property {
         else {
             status = "Sold";
         }
-        IO.println("Address: "+this.address + " Price: $" + String.format("%,.0f",this.price) + " Bedroom: " + this.bedroom + " Agent: " + agent.getName()  + status);
+        IO.println("Address: "+this.address + " Price: $" + String.format("%,.0f",this.price) + " Bedroom: " + this.bedroom + " Agent: " + agent.getName()+" "  + status);
 
 
     }
