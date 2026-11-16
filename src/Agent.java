@@ -20,7 +20,7 @@ public class Agent {
 
     public double calculateCommission(double salesPrice){
         if (salesPrice < 0) {
-            throw new IllegalArgumentException("Sales Rate must be positive");
+            throw new IllegalArgumentException("Sales price must be positive");
         }
        return salesPrice * commissionRate;
     }

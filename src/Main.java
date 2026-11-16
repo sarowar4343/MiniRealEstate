@@ -12,5 +12,16 @@ public class Main {
         } catch (IllegalArgumentException e) {
             System.out.println("Error: " + e.getMessage());
         }
+        Agent rahimSheikh = new Agent("Rahim Sheikh","016485548",0.02);
+        Property gulshanProperty = new Property("Gulshan,Dhaka",8500000,1,rahimSheikh);
+        Agency dhakaHomes = new Agency("Dhaka Homes");
+        dhakaHomes.addProperty(gulshanProperty);
+
+        Agent karim = new Agent("Karim Abbas", "016486166",0.015);
+        Property vatara = new Property("Vatara,Dhaka",8500000,1,karim);
+        vatara.markSold();
+        dhakaHomes.addProperty(vatara);
+
+        dhakaHomes.printAllProperties();
     }
 }
