@@ -19,5 +19,41 @@ public class Agency {
         }
     }
 
+    public int getTotalCount(){
+    return propertyList.size();
+    }
 
+    public int getAvailableCount(){
+        int counter = 0;
+        for (Property property : this.propertyList) {
+            if (!property.isSold()) {
+                counter++;
+            }
+        }
+        return counter;
+    }
+
+    public void printAvailableProperties() {
+        for (Property property : this.propertyList) {
+            if(!property.isSold())
+            {
+                property.printDetails();
+            }
+
+        }
+    }
+
+    public int getSoldCount(){
+        return getTotalCount() - getAvailableCount();
+    }
+
+
+   public void printSummary() {
+
+        IO.println("Properties Sold: " + getSoldCount());
+        IO.println("Property Available: " + getAvailableCount());
+        IO.println("Total Properties listing:" + getTotalCount());
+
+        printAvailableProperties();
+    }
 }
