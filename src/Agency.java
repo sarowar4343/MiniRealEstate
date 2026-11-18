@@ -43,6 +43,15 @@ public class Agency {
         }
     }
 
+    public void printSoldProperties() {
+        for (Property property : this.propertyList) {
+            if(!property.isSold())
+            {
+                property.printDetails();
+            }
+        }
+    }
+
     public int getSoldCount(){
         return getTotalCount() - getAvailableCount();
     }

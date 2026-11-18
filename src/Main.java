@@ -1,25 +1,56 @@
+import java.util.Scanner;
+
 public class Main {
     static void main(String[] args) {
-        Agent rahim = new Agent("Rahim", "01712345678", 0.02);
-        Property house = new Property("House 12, Dhanmondi", 8500000, 3, rahim);
-        // Status: Sold
-
-        try {
-            house.setPrice(-100);
-        } catch (IllegalArgumentException e) {
-            System.out.println("Error: " + e.getMessage());
+        Platfrom platfrom = new Platfrom();
+        Scanner input = new Scanner(System.in);
+       boolean continueLoop = true;
+       boolean continueLoop2 = true;
+        IO.println("Welcome to GhorBari.com");
+        IO.println("Press 1. Agency");
+        IO.println("Press 2. Buyer");
+        
+        if (input.nextLine().equals("1")) {
+            return;
+        } else if () {
+            
         }
-        Agent rahimSheikh = new Agent("Rahim Sheikh","016485548",0.02);
-        Property gulshanProperty = new Property("Gulshan,Dhaka",8500000,1,rahimSheikh);
-        Agency dhakaHomes = new Agency("Dhaka Homes");
-        dhakaHomes.addProperty(gulshanProperty);
 
-        Agent karim = new Agent("Karim Abbas", "016486166",0.015);
-        Property vatara = new Property("Vatara,Dhaka",8500000,1,karim);
-        vatara.markSold();
-        dhakaHomes.addProperty(vatara);
 
-        dhakaHomes.printAllProperties();
-        dhakaHomes.printSummary();
+        while (continueLoop) {
+            IO.println("Press 1.  Create Agency");
+            IO.println("Press 2.  Look Listing");
+            IO.println("Press 3.  Exit");
+            int loginOpt = input.nextInt();
+            if (loginOpt == 1) {
+                IO.println("Press 1. Enter you Agency name");
+                platfrom.registerAgency(input.next());
+                Agency agency = platfrom.registerAgency(input.next());
+
+                IO.println("Enter your name as an agent");
+                String name = input.nextLine();
+                IO.println("Enter your Contact Number");
+                String number = input.nextLine();
+                IO.println("Enter your Commission Rate");
+                double commissionRate = input.nextDouble();
+                Agent agent = new Agent(name, number, commissionRate);
+
+                IO.println("How many bedroom");
+                int bedroom = input.nextInt();
+                IO.println("Enter property Address");
+                String address = input.nextLine();
+                IO.println("Enter property Price");
+                double price = input.nextDouble();
+                Property property = new Property(address,price,bedroom,agent);
+                agency.addProperty( property);
+
+            }
+
+
+        }
+
+
+
+
     }
 }
