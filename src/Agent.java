@@ -8,6 +8,11 @@ public class Agent {
         this.phone = phone;
         this.commissionRate = commissionRate;
     }
+
+    public void printAgent(){
+        IO.println("Name: " + getName() + "\n Phone Number: " + getPhone() + "\n Commission Rate: " + getCommissionRate() + "\n Agent is created.");
+    }
+
     public String getName(){
         return name;
     }

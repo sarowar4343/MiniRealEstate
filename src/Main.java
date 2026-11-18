@@ -4,53 +4,89 @@ public class Main {
     static void main(String[] args) {
         Platfrom platfrom = new Platfrom();
         Scanner input = new Scanner(System.in);
-       boolean continueLoop = true;
-       boolean continueLoop2 = true;
-        IO.println("Welcome to GhorBari.com");
-        IO.println("Press 1. Agency");
-        IO.println("Press 2. Buyer");
-        
-        if (input.nextLine().equals("1")) {
-            return;
-        } else if () {
-            
-        }
+       boolean runningMain = false;
+       boolean runningAgency = false;
+       boolean runningAgencySys = false;
+       IO.println("Welcome to the SA Properties");
+       do{
+           IO.println("1.Agent");
+           IO.println("2.Buyer");
+           IO.println("3.QUIT ");
+           int choice = Integer.parseInt(input.nextLine());
+           if (choice == 1) {
+               do{
+                   IO.println("1.Log-In");
+                   IO.println("2.Create Account");
+                   int choice2 = Integer.parseInt(input.nextLine());
+                   if (choice2 == 1) {
+
+                       IO.println("Enter your agency name.");
+                       String name = input.nextLine();
+                       Agency agency = platfrom.loginAgency(name);
+                       if (agency == null) {
+                           IO.println("Invalid agency name.");
+                           break;
+                       }else IO.println(agency.getName() + " is logged in.");
+
+                       do {
+                           IO.println("1. Create your Listing");
+                           IO.println("2. Print All Properties");
+                           IO.println("3. Print Available Properties");
+                           IO.println("4. Print Sold Properties");
+                           IO.println("5. Exit to Main");
 
 
-        while (continueLoop) {
-            IO.println("Press 1.  Create Agency");
-            IO.println("Press 2.  Look Listing");
-            IO.println("Press 3.  Exit");
-            int loginOpt = input.nextInt();
-            if (loginOpt == 1) {
-                IO.println("Press 1. Enter you Agency name");
-                platfrom.registerAgency(input.next());
-                Agency agency = platfrom.registerAgency(input.next());
+                           int inputChoice = Integer.parseInt(input.nextLine());
+                           switch (inputChoice) {
+                               case 1:
+                                   IO.println("Enter your Name");
+                                   String agentName = input.nextLine();
+                                   IO.println("Enter your Contact Number");
+                                   String phone = input.nextLine();
+                                   IO.println("Enter your commission Rate");
+                                   double commissionRate = Double.parseDouble(input.nextLine());
+                                   Agent agent = new Agent(agentName, phone, commissionRate);
+                                   agent.printAgent();
 
-                IO.println("Enter your name as an agent");
-                String name = input.nextLine();
-                IO.println("Enter your Contact Number");
-                String number = input.nextLine();
-                IO.println("Enter your Commission Rate");
-                double commissionRate = input.nextDouble();
-                Agent agent = new Agent(name, number, commissionRate);
+                                   IO.println("Enter address for property.");
+                                   String address = input.nextLine();
+                                   IO.println("Enter number of bedrooms.");
+                                   int bedrooms = Integer.parseInt(input.nextLine());
+                                   IO.println("Enter price for property.");
+                                   double price = Double.parseDouble(input.nextLine());
+                                   IO.println("Enter Agent name.");
+                                   Property property = new Property(address, price, bedrooms, agent);
+                                   agency.addProperty(property);
+                                   break;
+                               default:
+                                   IO.println("Invalid choice.");
+                                   break;
+                           }
+                           if (inputChoice == 5) {
+                               runningAgency = true;
+                           }
+                       }while (!runningAgency);
+                   }
+                   else if (choice2 == 2) {
+                      IO.println("Enter you Agency name to register");
+                      String agencyName = input.nextLine();
+                      Agency agency = platfrom.registerAgency(agencyName);
 
-                IO.println("How many bedroom");
-                int bedroom = input.nextInt();
-                IO.println("Enter property Address");
-                String address = input.nextLine();
-                IO.println("Enter property Price");
-                double price = input.nextDouble();
-                Property property = new Property(address,price,bedroom,agent);
-                agency.addProperty( property);
+                   }
+                   else IO.println("Wrong choice");
+                   IO.println("Please enter correct key");
+                   if(choice2 ==3){
+                       runningAgency = true;
+                   }
+               }while(!runningAgency);
 
-            }
-
-
-        }
-
+           }
+           if (choice == 3) {
+               runningMain = true;
+           }
 
 
-
+       }
+       while(!runningMain);
     }
 }

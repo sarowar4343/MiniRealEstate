@@ -9,6 +9,8 @@ public class Agency {
         this.name = name;
     }
 
+
+
     public void addProperty(Property property) {
         this.propertyList.add(property);
     }
@@ -41,6 +43,10 @@ public class Agency {
             }
 
         }
+    }
+
+    public String getName(){
+        return this.name;
     }
 
     public void printSoldProperties() {
