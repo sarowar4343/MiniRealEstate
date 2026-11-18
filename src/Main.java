@@ -54,7 +54,6 @@ public class Main {
                                    int bedrooms = Integer.parseInt(input.nextLine());
                                    IO.println("Enter price for property.");
                                    double price = Double.parseDouble(input.nextLine());
-                                   IO.println("Enter Agent name.");
                                    Property property = new Property(address, price, bedrooms, agent);
                                    agency.addProperty(property);
                                    break;

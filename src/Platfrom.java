@@ -12,10 +12,9 @@ public class Platfrom {
     }
 
     public Agency loginAgency(String agencyName) {
-        Agency found = new Agency(agencyName);
         for (Agency agency : agencyList) {
-            if (agency.equals(found)) {
-                return found;
+            if (agency.getName().equals(agencyName)) {
+                return agency;
             }
         }
         return null;
