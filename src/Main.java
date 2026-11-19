@@ -19,16 +19,32 @@ public class Main {
                    IO.println("2.Create Account");
                    int choice2 = Integer.parseInt(input.nextLine());
                    if (choice2 == 1) {
+                       int counter = 3;
+                      boolean isValiadate = false;
+                      Agency agency = null;
 
-                       IO.println("Enter your agency name.");
-                       String name = input.nextLine();
-                       Agency agency = platfrom.loginAgency(name);
-                       if (agency == null) {
-                           IO.println("Invalid agency name.");
-                           break;
-                       }else IO.println(agency.getName() + " is logged in.");
 
                        do {
+                           for (int i = 0; i < counter; i++) {
+
+                               IO.println("Enter your username");
+                               String username = input.nextLine();
+                               IO.println("Enter your password");
+                               String password = input.nextLine();
+                               if (platfrom.loginValidation(username, password)) {
+                                   agency = platfrom.getAgency(username);
+                                   isValiadate = true;
+
+
+                               } else IO.println("Invalid username or password");
+                           }
+                           if (isValiadate) {
+                               IO.println("You have successfully logged in");
+
+                           } else break;
+
+
+
                            IO.println("1. Create your Listing");
                            IO.println("2. Print All Properties");
                            IO.println("3. Print Available Properties");
@@ -67,9 +83,17 @@ public class Main {
                        }while (!runningAgency);
                    }
                    else if (choice2 == 2) {
-                      IO.println("Enter you Agency name to register");
-                      String agencyName = input.nextLine();
-                      Agency agency = platfrom.registerAgency(agencyName);
+                   IO.println("Enter user name");
+                   String name = input.nextLine();
+                   IO.println("Enter Password");
+                   String password = input.nextLine();
+                   IO.println("Enter Agency Name");
+                   String agencyName = input.nextLine();
+                   if (platfrom.registerAgency(agencyName, password, name)) {
+                       IO.println("Account Created Successfully.");
+                   } else {
+                       IO.println("Error: Agency or username already exists.");
+                   }
 
                    }
                    else IO.println("Wrong choice");
