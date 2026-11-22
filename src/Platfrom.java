@@ -22,12 +22,19 @@ public class Platfrom {
 
     public boolean loginValidation(String name, String password){
         String savePassword = this.logInMap.get(name);
-       return savePassword.equals(password);
+       return password.equals(savePassword);
     }
 
     public Agency getAgency(String userName){
         return this.agencyMap.get(userName);
     }
+
+    public void printEverything(){
+        for (Agency agency : agencyMap.values()){
+            agency.printAllProperties();
+        }
+    }
+
 
 
 

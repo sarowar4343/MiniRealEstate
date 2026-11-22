@@ -110,8 +110,11 @@ public class Main {
                    }
                }while(!runningAgency);
 
-           }
-           if (choice == 3) {
+           } else if (choice == 2) {
+               platfrom.printEverything();
+
+
+           } else if (choice == 3) {
                runningMain = true;
            }
 

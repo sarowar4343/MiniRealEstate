@@ -48,7 +48,7 @@ public class Property {
 
     public void printDetails(){
         String status;
-        if (!this.isSold) {
+        if (this.isSold) {
             status = "Available";
         }
         else {
