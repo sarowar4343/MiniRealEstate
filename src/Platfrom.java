@@ -22,16 +22,15 @@ public class Platfrom {
         return true;
     }
 
-    public boolean loginValidation(String username, String password){
-        if(this.logInMap.containsKey(username) && this.logInMap.containsValue(password)){
-            return true;
-        }
-        return false;
+    public boolean loginValidation(String name, String password){
+        String savePassword = this.logInMap.get(name);
+       return savePassword.equals(password);
     }
 
     public Agency getAgency(String agencyName){
         return this.agencyMap.get(agencyName);
     }
+
 
 
 }

@@ -22,28 +22,29 @@ public class Main {
                        int counter = 3;
                       boolean isValiadate = false;
                       Agency agency = null;
+                       for (int i = 0; i < counter; i++) {
+
+                           IO.println("Enter your username");
+                           String username = input.nextLine();
+                           IO.println("Enter your password");
+                           String password = input.nextLine();
+                           if (platfrom.loginValidation(username, password)) {
+                               agency = platfrom.getAgency(username);
+                               isValiadate = true;
+                               break;
+                           } else {
+                               IO.println("Invalid username or password");
+                           }
+
+                       }
+                       if (isValiadate) {
+                           IO.println("You have successfully logged in");
+
+                       } else break;
+
 
 
                        do {
-                           for (int i = 0; i < counter; i++) {
-
-                               IO.println("Enter your username");
-                               String username = input.nextLine();
-                               IO.println("Enter your password");
-                               String password = input.nextLine();
-                               if (platfrom.loginValidation(username, password)) {
-                                   agency = platfrom.getAgency(username);
-                                   isValiadate = true;
-
-
-                               } else IO.println("Invalid username or password");
-                           }
-                           if (isValiadate) {
-                               IO.println("You have successfully logged in");
-
-                           } else break;
-
-
 
                            IO.println("1. Create your Listing");
                            IO.println("2. Print All Properties");
@@ -72,15 +73,21 @@ public class Main {
                                    double price = Double.parseDouble(input.nextLine());
                                    Property property = new Property(address, price, bedrooms, agent);
                                    agency.addProperty(property);
-                                   break;
+                               break;
+                               case 2: agency.printAllProperties();
+                               break;
+                               case 3: IO.println("Property Available: " + agency.getAvailableCount());
+                               break;
+                               case 4: IO.println("Property Sold: " + agency.getSoldCount());
+                               break;
                                default:
                                    IO.println("Invalid choice.");
                                    break;
                            }
                            if (inputChoice == 5) {
-                               runningAgency = true;
+                               runningAgencySys = true;
                            }
-                       }while (!runningAgency);
+                       }while (!runningAgencySys);
                    }
                    else if (choice2 == 2) {
                    IO.println("Enter user name");
@@ -89,7 +96,7 @@ public class Main {
                    String password = input.nextLine();
                    IO.println("Enter Agency Name");
                    String agencyName = input.nextLine();
-                   if (platfrom.registerAgency(agencyName, password, name)) {
+                   if (platfrom.registerAgency(name, password, agencyName)) {
                        IO.println("Account Created Successfully.");
                    } else {
                        IO.println("Error: Agency or username already exists.");
