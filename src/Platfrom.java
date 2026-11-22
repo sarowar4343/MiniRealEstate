@@ -1,11 +1,9 @@
-import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
 
 public class Platfrom {
-    Map <String,String> logInMap = new HashMap<>();
-    Map<String,Agency> agencyMap = new HashMap<>();
+    private Map <String,String> logInMap = new HashMap<>();
+    private Map<String,Agency> agencyMap = new HashMap<>();
 
     public boolean registerAgency (String userName,String password, String agencyName){
        for(Agency agency : agencyMap.values()){
@@ -27,8 +25,8 @@ public class Platfrom {
        return savePassword.equals(password);
     }
 
-    public Agency getAgency(String agencyName){
-        return this.agencyMap.get(agencyName);
+    public Agency getAgency(String userName){
+        return this.agencyMap.get(userName);
     }
 
 

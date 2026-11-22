@@ -40,8 +40,9 @@ public class Property {
     }
 
     public void markSold(){
-        if(!this.isSold) {
-            this.isSold = true;
+        if(this.isSold) {
+            this.isSold = false;
+            IO.print("Property Sold");
         }
     }
 
